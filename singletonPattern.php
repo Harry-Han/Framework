@@ -29,7 +29,6 @@ $obj1 = Single::getObject();
 //Single::$instance = null;//报错！
 $obj2 = Single::getObject();
 var_dump($obj1); echo "<br />";
-var_dump($obj2); echo "<br />”;
-
-
+var_dump($obj2); echo "<br />";
 ?>
+   
