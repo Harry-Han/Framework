@@ -31,4 +31,3 @@ $obj2 = Single::getObject();
 var_dump($obj1); echo "<br />";
 var_dump($obj2); echo "<br />";
 ?>
-   
