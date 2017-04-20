@@ -12,7 +12,7 @@ function esub($str, $length = 0,$ext = "..."){
     }
 
     /*
-    *strlen 计算一个UTF-8编码的字符串中文字符按三个长度计算
+    * strlen 计算一个UTF-8编码的字符串中文字符按三个长度计算
     * mb_strlen 计算一个UTF-8编码的字符串中文字符按一个长度计算
     */
     //计算字符串长度
