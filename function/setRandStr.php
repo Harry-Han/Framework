@@ -70,25 +70,18 @@ function getCurrentTime ()  {
 
 $startTime1 = getCurrentTime();
 $strRand1 = make_password(7);
-echo $strRand1 . '
-';
+echo $strRand1 . '</br>';
 $endTime1 = getCurrentTime();
-echo $endTime1 - $startTime1 . '
-';
+echo $endTime1 - $startTime1 . '</br>';
 
 $startTime2 = getCurrentTime();
 $strRand2 = create_password(7);
-echo $strRand2 . '
-';
+echo $strRand2 . '</br>';
 $endTime2 = getCurrentTime();
-echo $endTime2 - $startTime2 . '
-';
+echo $endTime2 - $startTime2 . '</br>';
 
 $startTime3 = getCurrentTime();
 $strRand3 = generate_password(7);
-echo $strRand3 . '
-';
+echo $strRand3 . '</br>';
 $endTime3 = getCurrentTime();
-echo $endTime3 - $startTime3 . '
-';
-?>
+echo $endTime3 - $startTime3 . '</br>';
