@@ -1,4 +1,5 @@
 <?php
+require_once("publicFun.php");
 /*
 * Actions 1
 * 1、预置一个的字符数组 $chars ，包括 a – z，A – Z，0 – 9，以及一些特殊字符。
@@ -58,14 +59,6 @@ function generate_password($strLength) {
         //$password .= $chars[ mt_rand(0, strlen($chars) - 1) ];
     }
     return $password;
-}
-
-/*
-* 计算脚本执行时间函数
-*/
-function getCurrentTime ()  {
-    list ($msec, $sec) = explode(" ", microtime());
-    return (float)$msec + (float)$sec;
 }
 
 $startTime1 = getCurrentTime();
