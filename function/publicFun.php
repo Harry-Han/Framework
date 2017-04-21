@@ -1,4 +1,5 @@
 <?php
+
 //随机生成value不重复数组
 function getRandUniqueArr($min, $max, $num) {//初始化变量为0
     $count = 0;
@@ -18,7 +19,7 @@ function getRandUniqueArr($min, $max, $num) {//初始化变量为0
 }
 
 //计算脚本运行时间
-function getCurrentTime ()  {
+function getCurrentTime () {
     list ($msec, $sec) = explode(" ", microtime());
     return (float)$msec + (float)$sec;
 }
