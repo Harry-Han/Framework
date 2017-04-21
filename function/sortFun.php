@@ -1,5 +1,5 @@
 <?php
-require("publicFun.php");
+require_once("publicFun.php");
 /**
  * @function1  堆排序
  * @purpose    堆排序函数:利用大（小）顶堆的特性，不断调整堆，依次选出待排序列中最大、次大值
@@ -204,6 +204,8 @@ function selectSort(&$ary) {
     return $ary;
 }
 
+//测试数据
+/*
 $arr = getRandUniqueArr(1, 10000, 100);
 
 $startTime1 = getCurrentTime();
@@ -249,4 +251,4 @@ selectSort($arr);
 print_r($arr);
 echo '</br>';
 $endTime7 = getCurrentTime();
-echo $endTime7 - $startTime7 . '</br>';
+echo $endTime7 - $startTime7 . '</br>';*/
