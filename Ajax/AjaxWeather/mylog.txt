@@ -1,0 +1,1 @@
+<result><city>北京</city><lowtemp>21</lowtemp><hightemp>27</hightemp><tianqi>images/yin_small.gif</tianqi><city>上海</city><lowtemp>21</lowtemp><hightemp>27</hightemp><tianqi>images/yin_small.gif</tianqi><city>成都</city><lowtemp>21</lowtemp><hightemp>27</hightemp><tianqi>images/yin_small.gif</tianqi></result>

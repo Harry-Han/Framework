@@ -1,0 +1,70 @@
+General Information
+This document describes the collection of bibliographies in BibTeX format in the area of Computer Science. Each bibliography in the collection is available with a link to the original site and possibly other sites, or as a local copy in BibTeX format in a canonical layout. 
+
+Each bibliography is accessed via a single HTML document giving information on the author (editor, maintainer) and the contents of the bibliography. That document also indicates other sites carrying that bibliography and in what format. Some large bibliographies have been split into several files, organized by publication dates. Each BibTeX file is compressed with GNU Gzip, a very efficient compression program. To view a bibliography you have to decompress it first, however, most WWW browsers will do that for you automatically. 
+
+The bibliographies have been collected using various Internet search tools and by contributions from individuals. They have been automatically converted to BibTeX format. The local BibTeX copies of the bibliographies are updated with every new release of the bibliography collection (about every month). 
+
+Not every bibliography I found could be integrated with this collection, that is, stored locally. These bibliographies are only represented by a link to their respective locations. These links can be found in the "Other bibliographies" sections in each area. There are real gems to be found in those sections, do not miss them! 
+
+Basically, the bibliographies can be divided into three categories: 
+
+Subject bibliographies: 
+these bibliographies cover (possibly very specialized) topics in computer science or related areas. 
+Series bibliographies: 
+theses bibliographies list the publications that appeared in the proceedings of a single conference or a series of conferences or that were published in a certain journal. 
+Author bibliographies: 
+these bibliographies aim at listing all the publications of a certain author, a certain research group or institution. 
+The bibliographies have been categorized into a few broader subject areas. This classification is very ad hoc and imperfect, however, and should be taken with a grain of salt. In fact, this classification only still exists for the benefit of the users who do not have access to a site with search interfaces. On the home site for the collection you can search the metabibliographical data and create your own subject area. 
+
+If you create WWW links to any of the bibliographies in this collection then please make the Link to the HTML document describing the bibliography and not to the BibTeX file itself. 
+
+I am working on this bibliography collection in my spare time, so please pardon me if I am not always able to respond instantly to the comments/suggestions/requests you send me. 
+
+Quality of the references
+The bibliographies have been independently created by many different authors. A consequence of this and the fact that BibTeX is an extensible bibliography format without strict rules about the use of fields (except as specified by the common BibTeX style files) is that the bibliographies have very diverse formats, some have abstracts and/or comments, some do not have either or in unusual fields. 
+
+Please also note that the emphasis of this collection is on papers in their various manifestations (journal articles, conference papers, technical reports,...), not on books! The traditional libraries do a pretty good job on cataloguing books, so you should look there if you are searching for books. 
+
+Most bibliographies in this collection do not claim to be exhaustive/complete/perfect and most aren't. You can try to judge the quality of a bibliography 
+
+by carefully reading the author's comments 
+by looking at the date of the most recent reference to see how up-to-date the bibliography is 
+by looking at the kind of BibTeX fields used in the bibliography: if there are many keyword fields and abstract fields, then the bibliography is probably pretty well organized. 
+It is my hope that even though many individual bibliographies are just arbitrary snapshots of the literature in an area, the accumulation of many bibliographies might still include most of the relevant literature. 
+
+The computer science bibliography collection has received some attention and I have made a list of awards and reviews for the collection that I have come across. 
+
+Furthermore there are many duplicate entries in the collection. The number of duplicate entries in the collection is growing rapidly, as more and more bibliographies are integrated that used the collection as a source for entries. This overlap between different bibliographies can not really be avoided if the individual bibliographies are to be comprehensive. As long as the spelling of titles is correct, the duplicate entries can be removed automatically to create a database without redundancy (see the section on the manipulation of BibTeX databases). Currently about 30% of the entries in the collection are automatically recognized as duplicate entries and have been removed from the database underlying the search interfaces. 
+
+I would actually like to invite people to use the collection to create bibliographies relating to a certain field by searching the collection, removing duplicates, correcting entries, adding more information to entries and adding more entries not present in the collection. 
+
+Please to not direct any questions concerning the contents of bibliographies, updates or corrections to me, but rather to the original author(s) of the bibliographies. 
+
+Note, that many bibliographies have been reformatted and are thus not verbatim copies of the original files. This must be taken into account if you are sending updates to the original author(s). 
+
+Disclaimer
+The maintainer is not responsible for the quality of the refences, any possible comments or evaluations and omissions in any of the files stored here. 
+
+I did my best to ascertain the authors of bibliographies and copyrights included in this collection, but this wasn't always possible. If you can make any corrections regarding bibliography author or maintainer attributions or missing bibliography copyrights, I would welcome any hints. 
+
+To Do List
+This is a list of features that should be implemented for the bibliography collection, but which are probably postponed indefinitely due to a lack of time. 
+
+try to create an identity for bibliographic entries, based on some notion of equality. This would 
+allow to assign time stamps to bibliographic entries indicating when they have been integrated into the collection and is a conditio sine qua non for any possible future subscription mechanism. 
+allow to establish a way to cite other references in the collection (currently this is possible only in the context of a single bibliography). 
+This basically means to generate a label for a reference that describes the publication (along the lines of biblabel, a nice program by Nelson Beebe, but with some improvements). 
+create a simple search interface for preformulated queries that can easily be embedded as a link in HTML documents, this is particularly desirable for author names. 
+the advanced search interface still has room for improvement (larger result sets; proximity search instead of phrases;) 
+the submission mechanism for individual references is very primitive and should be simplified for the non-BibTeX expert. 
+Acknowledgments
+Without the many people who collected references and made them available to the general public it would not have been possible to accumulate a collection of this size. There are too many to list here, but their names are listed with the individiual bibliographies. However, one extremely active contributor should be mentioned here: Nelson H. F. Beebe provides a large and growing number of high-quality bibliographies. Nelson increases the quality of this collection by using its database to create new bibliographies while crosschecking with other bibliographic sources and adding new entries. 
+
+Furthermore I would like to thank the authors and maintainers of all those wonderful index services for the Internet: archie, veronica, Lycos, Infoseek, AltaVista, HotBot and many more, without which I could never have found so many bibliographies. 
+
+For the conversion between bibliography formats and general handling of the bibliography I am indebted to many individuals and projects: 
+Nelson H. F. Beebe (BibTeX syntax checking), Dana Jacobsen (refer to BibTeX conversion), Larry Wall (who gave us Perl), GNU (for their make and other utilities), Lee McLoughlin (mirror) , the authors of libwww-perl, the authors of glimpse (Udi Manber, Sun Wu, and Burra Gopal), the authors of freeWAIS-sf, and many more. 
+
+Finally, the Lehrstuhl Informatik for Ingenieure und Naturwissenschaftler provides the physical resources (disk space and CPU time) for this project. 
+

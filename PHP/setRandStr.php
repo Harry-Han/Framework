@@ -1,7 +1,7 @@
 <?php
 require_once("publicFun.php");
 /*
-* Actions 1
+* PHP 1
 * 1、预置一个的字符数组 $chars ，包括 a – z，A – Z，0 – 9，以及一些特殊字符。
 * 2、通过array_rand()从数组$chars中随机选出$length个元素。
 * 3、根据已获取的键名数组 $keys，从数组$chars取出字符拼接字符串。该方法的缺点是相同的字符不会重复取
@@ -28,7 +28,7 @@ function make_password($strLength) {
     return $password;
 }
 
-/* Actions 2
+/* PHP 2
 * 1、在33 – 126中生成一个随机整数，如35。
 * 2、将35转换成对应的ASCII码字符，如35对应#。
 * 3、重复以上1、2步骤n次，连接成n位的密码。
@@ -41,7 +41,7 @@ function create_password($strLength) {
     }
     return $password;
 }
-/* Actions 3
+/* PHP 3
 *1、预置一个的字符串 $chars ，包括 a – z，A – Z，0 – 9，以及一些特殊字符。
 *2、在 $chars 字符串中随机取一个字符。
 *3、重复第二步n次，可得长度为n的密码。
