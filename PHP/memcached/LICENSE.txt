@@ -1,0 +1,21 @@
+文件结构目录
+
+
+
+             ---------- /ConsistentHashMemcache.class.php   ------ memcached 分布式缓存---一致哈希算法
+             |
+             |
+             |
+             ---------- /GetModMemcache.class.php           ------ memcached 分布式缓存---取模算法
+             |
+             |
+             |
+memcached    ---------- /        -------
+             |
+             |
+             |
+             ---------- /        -------
+             |
+             |
+             |
+             ---------- /        -------

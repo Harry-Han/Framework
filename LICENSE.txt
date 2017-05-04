@@ -1,0 +1,24 @@
+目录结构说明：/Library/WebServer/Documents/ThinkPHP
+
+             ---------- /server   ------
+             |                         |
+             |                         |----- ThinkPHP 项目内容
+             |                         |
+             ---------- /ThinkPHP ------
+             |
+             |
+             |
+             ---------- /Ajax --------------- Ajax 项目内容
+             |
+    ThinkPHP |
+             |
+             ---------- /Javascript --------- Javascript 项目内容
+             |
+             |
+             |
+             ---------- /PHP  --------------- PHP 项目内容
+             |
+             |
+             |
+             ---------- /nate.txt ----------- 文档目录结构说明
+

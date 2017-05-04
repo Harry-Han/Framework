@@ -30,3 +30,32 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
+
+
+
+
+文件结构目录
+
+             ---------- /Common   ------ 函数库文件目录
+             |
+             |
+             |
+             ---------- /Conf ---------- 配置文件目录
+             |
+             |
+             |
+             ---------- /Library ------- 主要资源文件目录
+             |
+    ThinkPHP |
+             |
+             ---------- /ThinkPHP.php -- 框架接口文件目录
+             |
+             |
+             |
+             ---------- /Tpl  ---------- 模板文件目录
+             |
+             |
+             |
+             ---------- /LICENSE.txt ----------- 文档目录结构说明
+
+

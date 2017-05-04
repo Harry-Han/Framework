@@ -1,1 +1,0 @@
-说明：server目录下的Common、Home、Runtime是第一次运行框架的时候自动生成的

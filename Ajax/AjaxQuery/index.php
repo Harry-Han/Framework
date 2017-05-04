@@ -18,15 +18,15 @@
                     document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                 }
                 }
-                xmlhttp.open("GET", "gethint.php?q=" + str, true);//Èı¸ö²ÎÊı£¬µÚÒ»¸ö´«Öµ·½Ê½£¬µÚ¶ş¸öURL£¬µÚÈı¸öÍ¬/Òì²½
+                xmlhttp.open("GET", "gethint.php?q=" + str, true);//ä¸‰ä¸ªå‚æ•°ï¼Œç¬¬ä¸€ä¸ªä¼ å€¼æ–¹å¼ï¼Œç¬¬äºŒä¸ªURLï¼Œç¬¬ä¸‰ä¸ªåŒ/å¼‚æ­¥
                 xmlhttp.send();
             }</script>
     </head>
     <body>
-        <h3>ÇëÔÚÏÂÃæµÄÊäÈë¿òÖĞ¼üÈë×ÖÄ¸£¨A - Z£©£º</h3>
-        <form action="">ĞÕÊÏ£º
+        <h3>è¯·åœ¨ä¸‹é¢çš„è¾“å…¥æ¡†ä¸­é”®å…¥å­—æ¯ï¼ˆA - Zï¼‰ï¼š</h3>
+        <form action="">å§“æ°ï¼š
             <input type="text" id="txt1" onkeyup="showHint(this.value)" /></form>
-        <p>½¨Òé£º
+        <p>å»ºè®®ï¼š
             <span id="txtHint"></span></p>
     </body>
 
