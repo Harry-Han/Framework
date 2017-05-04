@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body onLoad="getTime()"><!--页面加载时候自动获取时间-->
+<script type="text/javascript">
+    var obj;                                  //建立全局变量
+    function getTime() {
+        obj=document.getElementById("myDiv"); //得到容器对象
+        var myDate = new Date();              //得到时间对象
+        var y = myDate.getYear() + 1900;      //获取年
+        var m = myDate.getMonth() + 1;        //获取月
+        m = m > 9 ? m : "0" + m;              //如果月份小于10,则在前面加0补充为两位数字
+        var d = myDate.getDate();             //获取日
+        d = d > 9 ? d : "0" + d;              //如果天数小于10,则在前面加0补充为两位数字
+        var h = myDate.getHours();            //获取小时
+        h = h > 9 ? h : "0" + h;              //如果小时数字小于10,则在前面加0补充为两位数字
+        var M = myDate.getMinutes();          //获取分
+        M = M > 9 ? M : "0" + M;              //如果分钟小于10,则在前面加0补充为两位数字
+        var s = myDate.getSeconds();          //获取秒
+        s = s > 9 ? s : "0" + s;              //如果秒数小于10,则在前面加0补充为两位数字
+        var NowTime = y + "年" + m + "月" + d + "日" + " " + h + ":" + M + ":" + s; //串联字符串用于输入
+        obj.value=NowTime;                    // 在文本框中输入时间
+        window.setTimeout("getTime()",1000);  //每隔1秒自动变换时间
+    }
+</script>
+<input type="text" id="myDiv" size="19" style="border:0"/>
+</body>
+</html>

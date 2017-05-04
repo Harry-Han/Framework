@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>PHP ajax Tree树形菜单</title>
+	<link rel="stylesheet" href="css/folder-tree-static.css" type="text/css">
+	<link rel="stylesheet" href="css/context-menu.css" type="text/css">
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/folder-tree-static.js"></script>
+	<script type="text/javascript" src="js/context-menu.js"></script>
+</head>
+<body>
+	<p>PHP ajax Tree树形菜单 运用Javascript和 XML技术实现)</p>
+	<ul id="dhtmlgoodies_tree" class="dhtmlgoodies_tree">
+		<li><a href="#" id="node_1">Europe</a>
+			<ul>
+				<li parentId="1"><a href="#" id="node_2">Loading...</a></li>
+			</ul>
+		</li>
+		<li><a href="#" id="node_3">Asia</a>
+			<ul>
+				<li parentId="2"><a href="#" id="node_4">Loading...</a></li>
+			</ul>
+		</li>
+		<li><a href="#" id="node_5">Africa</a>
+			<ul>
+				<li parentId="3"><a href="#" id="node_6">Loading...</a></li>
+			</ul>
+		</li>
+		<li><a href="#" id="node_7">America</a>
+			<ul>
+				<li parentId="4"><a href="#" id="node_8">Loading...</a></li>
+			</ul>
+		</li>
+	</ul>
+	<a href="#" onclick="expandAll('dhtmlgoodies_tree');return false">Expand all</a>
+	<a href="#" onclick="collapseAll('dhtmlgoodies_tree');return false">Collapse all</a>
+	<p>Static tree</p>
+	<ul id="dhtmlgoodies_tree2" class="dhtmlgoodies_tree">
+		<li><a href="#" id="node_100">Europe</a>
+			<ul>
+				<li><a href="#" id="node_101">Norway</a>
+					<ul>
+						<li><a href="#" id="node_102">Rogaland</a>
+							<ul>
+								<li class="dhtmlgoodies_sheet.gif"><a href="#" id="node_103">Stavanger</a></li>
+								<li class="dhtmlgoodies_sheet.gif"><a href="#" id="node_104">Haugesund</a></li>
+							</ul>
+						</li>
+						<li class="dhtmlgoodies_sheet.gif"><a href="#" id="node_105">Hordaland</a></li>
+						<li class="dhtmlgoodies_sheet.gif"><a href="#" id="node_106">Oslo</a></li>
+					</ul>
+				</li>
+				<li><a href="#" id="node_107">United Kingdom</a>
+					<ul>
+						<li><a href="#" id="node_108">London</a></li>
+						<li><a href="#" id="node_109">Manchester</a></li>
+						<li><a href="#" id="node_110">Oxford</a></li>
+					</ul>
+				</li>
+				<li><a href="#" id="node_111">Sweden</a></li>
+				<li><a href="#" id="node_112">Denmark</a></li>
+				<li><a href="#" id="node_113">Germany</a></li>
+			</ul>
+		</li>
+		<li><a href="#" id="node_114">Asia</a></li>
+		<li><a href="#" id="node_115">Africa</a>
+			<ul>
+				<li><a href="#" id="node_116">Tanzania</a></li>
+				<li><a href="#" id="node_117">Kenya</a></li>
+			</ul>
+		</li>
+		<li><a href="#" id="node_118">America</a>
+			<ul>
+				<li class="dhtmlgoodies_sheet.gif"><a href="#" id="node_119">Canada</a></li>
+				<li><a href="#" id="node_120">United States</a></li>
+				<li class="dhtmlgoodies_sheet.gif"><a href="#" id="node_121">Mexico</a></li>
+				<li><a href="#" id="node_122">Argentina</a></li>
+			</ul>
+		</li>
+	</ul>
+	<a href="#" onclick="expandAll('dhtmlgoodies_tree2');return false">Expand all</a>
+	<a href="#" onclick="collapseAll('dhtmlgoodies_tree2');return false">Collapse all</a>
+	<ul id="contextMenu">
+		<li><a href="#" onclick="addNewNode(event);return false">Add new node</a></li>
+		<li><a href="#" onclick="deleteNode(event);return false">Delete node</a></li>
+	</ul>
+	<script type="text/javascript">
+	initContextMenu();
+	</script>
+	<div style="display:none"><script language="javascript" type="text/javascript" src="/include/tongji.js"></script></div>
+</body>
+</html>

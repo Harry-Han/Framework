@@ -1,0 +1,159 @@
+<html>
+<head>
+    <title>英语文档单词统计</title>
+    <meta charset="utf-8" >
+<style type="text/css"> 
+	#show table{
+		background-color:#FF6;	
+		width:1200px;
+	}
+</style>
+</head>
+<body>
+请选择要做单词统计分析的英文文档: 
+   <input type="file" id="txtfiletoread" />
+   <div id="show"></div>
+    <script>
+/**
+ * 程序开始运行， 按"浏览"钮选择一个英文文档， 
+ * 即可得到按字母顺序列出的所有单词，及其出现的次数
+ * 
+ * 作者： 许同春 author Tongchun Xu 
+ * @开源中国 Open Source, Chna communiity
+ * 完成日期：2016年6月21日 completion date: 21 June, 2016
+ * 参考：Mahesh Sabnis,
+ * http://www.dotnetcurry.com/html5/1167/read-local-file-api-html5-javascript?utm_source=tuicool&utm_medium=referral 
+ */
+ 
+  window.onload = function () { 
+//Check the support for the File API support 
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+   var fileSelected = document.getElementById('txtfiletoread');
+   fileSelected.addEventListener('change', function (e) { 
+     //Set the extension for the file 
+     var fileExtension = /text.*/; 
+     //Get the file object 
+     var fileTobeRead = fileSelected.files[0];
+	//Check of the extension match 
+     if (fileTobeRead.type.match(fileExtension)) { 
+       //Initialize the FileReader object to read the 2file 
+       var fileReader = new FileReader(); 
+       fileReader.onload = function (e) { 
+    var fileContents = document.getElementById('filecontents'); 
+	var text=turnTos(fileReader.result);//将文档中的所有分隔符换成空格
+	result=text.match(/\S+/g);//以一个或多个空格为分隔符，生成单词数组
+	var list = new SList() ; //创建一个单链表
+	 //按字母顺序插入单词，重复出现时，其频度自增一
+	 for (var i=1;i<result.length;i++){
+		list.orderInsert(result[i]);
+		}
+        list.traversal(); 
+       } 
+    fileReader.readAsText(fileTobeRead); 
+     } 
+     else { 
+    alert("Please select text file"); 
+     }
+  }, false);
+} 
+ else { 
+   alert("Files are not supported"); 
+ } 
+}
+ 
+function turnTos(str){
+var s=str.replace(/!/g, " "); 	//全部用空格代替"!"
+ s=s.replace(/,/g," ");			//全部用空格代替逗号“，” 
+ s=s.replace(/\./g," ");		//全部用空格代替句号“.”
+ s=s.replace(/\?g/," ");		//全部用空格替换问号 "?"
+ s=s.replace(/\%/g," ");		//全部用空格替换百分号 "%"
+ s=s.replace(/\"/g," ");		//全部用空格替换双引号 "
+ s=s.replace(/\'/g," ");		//全部用空格替换单引号 ‘
+ s=s.replace(/\[/g," ");
+ s=s.replace(/]/g," ");
+ s=s.replace(/\(/g," ");
+ s=s.replace(/\)/g," ");
+ s=s.replace(/:/g," ");
+ s=s.replace(/\n/g," ");
+  s=s.replace(/\//g," ");
+ s=s.replace(/\r/g," ");
+
+return s;
+}
+function Node(data) {  
+        this.data = data; 
+		this.frequency =1;
+        this.next = null;  
+            }  			
+var SList =function SList() {  
+        this.head = new Node("Dummy");
+		this.counter=0;  
+            }  
+SList.prototype.insertLast =function(data) {  
+        var p = this.head;  
+        while (p.next!=null) 
+        p = p.next;
+		p.next=new Node(data); 
+		this.counter++;
+        } 
+SList.prototype.isEmpty =function() {
+	return this.head.next == null;
+}
+
+SList.prototype.insertFirst =function(data) { 
+		var p=new Node(data);  
+        p.next = this.head.next;  
+        this.head.next=p;
+		this.counter++;
+        } 
+
+SList.prototype.traversal=function (){
+	var output="";
+	if(!this.isEmpty()){ 
+   	var p=this.head;
+	output += "统计结果如下： 共找出";
+	output += this.counter;  
+	output += " 个单词 <table border='1'><tr>"; 
+	var n=0;
+	while (p.next != null){
+	output +="<td>"+ p.next.data+"<br>出现次数: "+ 
+	p.next.frequency +" </td>";
+	 p = p.next;
+	 n++;
+	 if (n%10==0) output += "</tr><tr>";
+	 }
+	 output += "</tr></table>";
+	 document.getElementById("show").innerHTML=output;
+    	}else
+	document.getElementById("show").innerHTML="链表为空！";		
+ }
+
+//按字母顺序插入单词
+ SList.prototype.orderInsert =function(data) {  
+ var k = this.search( data );
+ if (k) k.frequency++; //单词重复出现时，其频度自增一
+ else {//否则，当第一次出现时
+		var p = new Node(data); //建立新单词的新结点
+        var q = this.head;  
+		//按字母顺序插入新结点
+        while (q.next!=null && q.next.data<data) 
+        q = q.next;
+		p.next=q.next;
+		q.next=p;
+		this.counter++;
+ 		} 
+	}
+ SList.prototype.search= function (data) {  //寻找单词 data
+        var p = this.head;  
+        while (p.data != data && p.next!=null) 
+        p = p.next;
+		if (p.data !=data)
+        return null; //若找没有找到，返回 “空”
+		else
+		return p; //若找到单词，返回单词所在的结点
+        } 
+
+ </script>
+	
+</body>
+</html>

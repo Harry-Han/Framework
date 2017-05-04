@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<title>照片墙</title>
+<style>
+*{margin:0;padding:0;list-style:none;}
+#ul1{ position:relative;width:510px; margin:100px auto;}
+#ul1 li{float:left;width:150px; height:150px; margin:10px;}
+#ul1 li img{width:100%;}
+.box{border:5px dashed red;}
+</style>
+<script src="js/move.js"></script>
+<script>
+window.onload = function(){
+	var oUl = document.getElementById("ul1");
+	var aLi = oUl.children;
+	var len = aLi.length;
+	var zIndex = 1;
+	
+	var aPos = [];//存坐标
+	for(var i = 0; i < len; i++){
+		aPos[i] = {left:aLi[i].offsetLeft,top:aLi[i].offsetTop};
+		aLi[i].style.left = aPos[i].left + "px";
+		aLi[i].style.top  = aPos[i].top + "px";
+	}
+	
+	for(var i = 0; i < len; i++){
+		aLi[i].style.position = "absolute";	
+		aLi[i].style.margin = "0";
+		aLi[i].index = i;	
+		
+		drag(aLi[i]);
+	}
+	function drag(obj){
+		obj.onmousedown = function(ev){
+			var oEvent = ev || event;
+			var disX = oEvent.clientX - obj.offsetLeft;
+			var disY = oEvent.clientY - obj.offsetTop;
+			
+			//层级
+			obj.style.zIndex = zIndex++;
+			clearInterval(obj.timer);
+			
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+				obj.style.left = oEvent.clientX - disX + "px";
+				obj.style.top  = oEvent.clientY - disY + "px";
+				
+				//清空所有
+				for(var i = 0; i < len; i++){
+					aLi[i].className = "";
+				}
+				var oNear = findMin(obj); 
+				//oNear && (oNear.className = "box");
+			};
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+				obj.releaseCapture && obj.releaseCapture();
+				var oNear = findMin(obj); 
+				if(oNear){
+					/*
+						oNear  --> obj
+						obj --> oNear					
+					*/
+					var tmp = oNear.index;
+					oNear.index = obj.index;
+					obj.index = tmp;
+					
+					move(oNear,aPos[oNear.index]);
+				}
+				
+				move(obj,aPos[obj.index]);
+			};	
+			obj.setCapture && obj.setCapture();
+			return false;
+		};
+	}
+	
+	
+	function getDis(obj1,obj2){
+		var a = obj1.offsetLeft - obj2.offsetLeft; 
+		var b = obj1.offsetTop - obj2.offsetTop;
+		
+		return Math.sqrt(a*a + b*b);
+	}
+	
+	//找最近 1 先碰上 2 算距离 3 找最近
+	function findMin(obj){
+		var iMin = 9999999;
+		var iMinIndex = -1;
+		
+		for(var i = 0; i < len; i++){
+			//先碰撞检测
+			if(obj == aLi[i]){continue;}
+			if(collTest(obj,aLi[i])){
+				//算距离
+				var dis = getDis(obj,aLi[i]);
+				if(iMin > dis){
+					iMin = dis;
+					iMinIndex = i;
+				}
+			}
+		}
+		
+		if(iMinIndex == -1){
+			return null;
+		}
+		
+		return aLi[iMinIndex];
+	}
+	
+	//碰撞
+	function collTest(obj1,obj2){
+		var l1 = obj1.offsetLeft;
+		var t1 = obj1.offsetTop;
+		var r1 = l1 + obj1.offsetWidth;
+		var b1 = t1 + obj1.offsetHeight;
+		
+		var l2 = obj2.offsetLeft;
+		var t2 = obj2.offsetTop;
+		var r2 = l2 + obj2.offsetWidth;
+		var b2 = t2 + obj2.offsetHeight;
+		
+		if(r1 < l2 || b1 < t2 || l1 > r2 || t1 > b2){//没碰上
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	var oBtn = document.getElementById("btn1");
+	oBtn.onclick = function(){
+		aPos.sort(function(){
+			return Math.random() - 0.5;	
+		}); 
+		
+		for(var i = 0; i < len; i++){
+			aLi[i].index = i;
+			move(aLi[i],aPos[i]);
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="随机换一下" />
+<ul id="ul1">
+	<li><img src="img/1.jpg" /></li>
+	<li><img src="img/2.jpg" /></li>
+	<li><img src="img/3.jpg" /></li>
+	<li><img src="img/4.jpg" /></li>
+	<li><img src="img/5.jpg" /></li>
+	<li><img src="img/6.jpg" /></li>
+	<li><img src="img/7.jpg" /></li>
+	<li><img src="img/8.jpg" /></li>
+	<li><img src="img/9.jpg" /></li>
+</ul>
+</body>
+</html>

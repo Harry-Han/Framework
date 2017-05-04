@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<title>元旦倒计时</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+div{ font-size: 40px; text-align: center;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div1');
+	//2.未来时间(2016.1.1)
+	var targetTime=new Date();
+	targetTime.setFullYear(2017,0,1);
+	targetTime.setHours(0,0,0,0);
+	tick();
+	function tick(){
+		var nowTime=new Date();
+		var ms=targetTime.getTime()-nowTime.getTime();//毫秒
+		var s=parseInt(ms/1000);
+		var date=parseInt(s/86400);
+		s=s%86400;	//剩下的s是	去天后的秒
+		var hours=parseInt(s/3600);
+		s=s%3600;	//剩下的s是	去小时后的秒
+		var minutes=parseInt(s/60);
+		s=s%60
+		//alert(date+':'+hours+':'+minutes)
+		 oDiv.innerHTML='距离元旦还有'+date+'天'+hours+'小时'+minutes+'分'+s+'秒';		
+	}
+	
+	setInterval(tick,1000);
+};
+</script>
+</head>
+
+<body>
+
+<div id="div1">距离元旦还有10天6小时57分23秒</div>
+
+</body>
+</html>
