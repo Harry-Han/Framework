@@ -19,9 +19,12 @@ function compareVersion($version1, $version2) {
     }
     return 0;
 }
-
+///////////////////////////////
 $ver1 = '14.4.1';
 $ver2 = '14.3.1';
 $result = compareVersion($ver1,$ver2);
+<<<<<<< HEAD
 
 ////////////////////
+=======
+>>>>>>> branch/1.0.3_master
