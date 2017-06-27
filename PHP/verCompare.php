@@ -2,6 +2,8 @@
 /*
  * 用来进行版本比较的函数
  */
+
+//+++++++20170627++++++++
 function compareVersion($version1, $version2) {
     $version1Array = explode('.', $version1);
     $version2Array = explode('.', $version2);
