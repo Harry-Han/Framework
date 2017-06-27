@@ -2,8 +2,6 @@
 /*
  * 用来进行版本比较的函数
  */
-
-//+++++++20170627++++++++
 function compareVersion($version1, $version2) {
     $version1Array = explode('.', $version1);
     $version2Array = explode('.', $version2);
@@ -25,6 +23,3 @@ function compareVersion($version1, $version2) {
 $ver1 = '14.4.1';
 $ver2 = '14.3.1';
 $result = compareVersion($ver1,$ver2);
-/*
- * test +1.0.3_master++++++++++++++++++++++++
- */
