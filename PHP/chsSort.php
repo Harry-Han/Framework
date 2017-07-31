@@ -14,7 +14,7 @@ for($i = 0; $i<$len; $i++){
 //将中文字符转换成gbk编码,必须先将数组转换为字符串，然后转换编码，最后将字符串反转成数组
 $sta = eval('return '.mb_convert_encoding(var_export($sta,true), "gbk","utf-8").";");
 
-/*
+/**
 * 按数组值进行排序
 * gbk和gb2312本身的编码就是用拼音排序的，而utf-8 不是按拼音排序的，所以需要转换成gbk格式进行排序
 */

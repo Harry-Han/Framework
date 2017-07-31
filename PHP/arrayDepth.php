@@ -15,7 +15,6 @@ function arrayDepth(array $array){
     return $max_depth;
 }
 
-
 $arr = array(
     array(
         '1' => '1111',

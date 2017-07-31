@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * 利用curl 与服务器进行各种协议的通信
  */
 //$str1 http协议 request数据
