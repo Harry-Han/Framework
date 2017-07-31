@@ -27,7 +27,8 @@ function readDirS_array($path, $deep=0) {
             $fileinfo['config'] = 'config_' . $filename;
         }else{
             // 这里如果不unset 掉的话以后每次没有'config'子串的$file_list[]都会保存上次的 $fileinfo['config']值
-            unset($fileinfo['config']);
+            if(isset($fileinfo['config']))
+                unset($fileinfo['config']);
         }
 
         $fileinfo['filename'] = $filename;
