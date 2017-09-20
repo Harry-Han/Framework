@@ -53,14 +53,14 @@ function uploadFile($file_info) {
     }
 
     // 判断文件类型
-    // 后缀名
+    // 1.后缀名
     $ext_list = array('.jpg', '.png', '.gif', '.jpeg');// 允许的后缀名列表
     $ext = strrchr($file_info['name'], '.');
     if (! in_array($ext, $ext_list)) {
         echo '类型，后缀不合法';
         return false;
     }
-    // MIME
+    // 2.MIME
     $mime_list = array('image/jpeg', 'image/png', 'image/gif');// 允许的mime列表！
     if (! in_array($file_info['type'], $mime_list)) {
         echo '类型，MIME不合法';
@@ -102,7 +102,9 @@ function uploadFile($file_info) {
         echo '不是HTTP上传的临时文件';
         return false;
     }
-    // 移动！
+    // 移动 文件上传默认是先将文件传到服务器的临时目录中（tmp），然后如果是php的话在用函数
+    // move_uploaded_file(服务器文件的临时目录, 你要上传到的服务器的路劲) 将文件移动到
+    // 你想要的地方，如果不移动脚本执行完后上传文件也就删掉了
     if (move_uploaded_file($file_info['tmp_name'], $upload_path . $sub_dir . $dst_name)) {
         // 移动成功
         return $sub_dir . $dst_name;// 仅仅返回 上传目录之后的地址即可！

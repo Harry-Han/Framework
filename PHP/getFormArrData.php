@@ -6,7 +6,7 @@ function getFormArrData($responseData){
     $password = $responseData['paw'];
     echo $userId . $email . $password;
 }
-?>s
+?>
 <html>
 <head>
 </head>

@@ -1,0 +1,23 @@
+目录结构说明：/Library/WebServer/Documents/ThinkPHP
+
+                ---------- imgUploadMultiFrom.html --------上传图片的form 表单
+                |
+                |
+                |
+                ---------- imgUploadMulti.php      --------上传图片逻辑
+                |
+                |
+                |
+                ----------
+                |
+imgUploadMulti  |
+                |
+                ----------
+                |
+                |
+                |
+                ----------
+                |
+                |
+                |
+                ----------
