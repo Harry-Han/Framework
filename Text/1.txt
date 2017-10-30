@@ -1,0 +1,105 @@
+1.
+array_key_exists 是检查某个数组中是否有指定的键名
+isset 检查某个值是否设置，是一个语言结构
+2.
+require/require_once() 放在php文件的最前面执行,引入的文件存在错误的话，程序就会中断执行，并显示致命错误
+include/include_once() 放在流程控制的处理部分中,引入的文件存在错误的话，程序就会继续执行，并显示一个警告
+3.
+http请求报文：请求行／消息报头／请求正文
+请求行格式：Method Request-URI HTTP-Version CRLF
+
+http响应报文：状态行／消息报头／响应报文
+状态行格式：HTTP-Version Status-Code Reason-Phrase CRLF
+
+常见状态码：
+状态代码有三位数字组成，第一个数字定义了响应的类别，且有五种可能取值：
+1xx：指示信息--表示请求已接收，继续处理
+2xx：成功--表示请求已被成功接收、理解、接受
+3xx：重定向--要完成请求必须进行更进一步的操作
+4xx：客户端错误--请求有语法错误或请求无法实现
+5xx：服务器端错误--服务器未能实现合法的请求
+
+常见状态代码、状态描述、说明：
+200 OK      //客户端请求成功
+302 Found   //临时重定向
+400 Bad Request  //客户端请求有语法错误，不能被服务器所理解
+401 Unauthorized //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用
+403 Forbidden  //服务器收到请求，但是拒绝提供服务
+404 Not Found  //请求资源不存在，eg：输入了错误的URL
+500 Internal Server Error //服务器发生不可预期的错误
+503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后可能恢复正常
+
+4.
+explain  分析sql语句的执行计划:
+#分析sql语句的执行计划，type 使用类别，是否用到索引，结果值从好到坏：… > range(使用到索引) > index > ALL(全表扫描)，一般查询应达到range级别，rows:sql执行检查的记录数，
+
+profiles  分析sql语句执行时间和消耗资源：
+set profiling=1; #启动profiling
+select * from user;
+show profiles; #显示执行时间
+show profile cpu,block io for query 1;  #分析对应的sql语句的资源消耗情况
+
+log_slow_queries 分析sql的慢查询日志
+
+sql优化的一些技巧：
+索引，避免全表扫描
+
+首先 explain 分析该条语句查看该sql的执行计划，查看type使用级别，是否使用索引，如果查询语句没问题，索引没问题，查看单表数据量是否过大，数据量过大考虑分表存储
+
+优化的顺序：
+查询层：sql语句的优化，查看具体的SQL语句在查询上存不存在问题
+设计层：索引，缓存，分区分表
+存储层：存储引擎的选择，字段类型的选择，范式设计
+架构层：mysql服务集群，主从复置，读写分离
+
+5.redis
+数据类型
+string:incr操作可以做统计计算，统计网站访问次数，博客访问次数
+list:存放微博中我的关注列表
+set: 投票系统
+sort set: 排行榜
+hash:
+
+redis 事务处理
+1).只能保证一个客户端连接发起事务中的命令可以连续执行，中间不会插入其他客户端的命令
+2).只能保证事务的每个命令能够连续执行，如果事务中有命令执行失败，不进行回滚
+
+redis 持久化
+RDB持久化：
+创建快照的方法：
+1).BGSAVRE：客户端发送BGSAVE命令创建一个快照，redis会调用fork创建一子进程，子进程负责将快照写入硬盘，
+父进程继续处理命令请求，随着redis占用的内存越来越多，BGSAVE创建子进程的时间也越来越多
+2).SAVE：客户端发送SAVE命令创建一个快照，在快照创建完毕之前不再响应其他任何命令
+
+缺点：
+1).如果系统奔溃，快照方法会丢失部分数据
+2).每次快照不是只写增量，而是全部数据，如果数据量大的话，写入操作频繁会影响性能
+
+AOF持久化：
+把修改数据的命令通过write命令追加到appendonly.aof文件末尾
+
+缺点：
+1).aof文件体积会越来越大    可以通过BGREWRITEAOF命令重写aof文件
+2).大量命令的写入性能受硬盘限制    可以设置每秒一次的频率对aof文件进行同步
+
+主从同步：
+1).slave连接master
+2).slave发送sycn命令请求同步
+3).master通过BGSAVE创建一个rdb
+4).master把rdb传输给slave
+5).slave把rdb导入数据库
+6).master把所有用户在生成rdb之后的数据操作通过命令的形式发送给slave
+
+内存淘汰：
+
+1).虚拟内存  vm-enabled 设置yes
+2).内存淘汰
+①随机:随机删除一个key
+②LRU:最近最少使用
+③TTL:最快过期
+
+
+mysql主从复制
+1).主服务器将主库数据的更新操作写入bin log日志,binlog dump线程将 binlog 传输给从服务器
+2).从服务器I/O线程将bin log复制到relay log中
+3).从服务器sql线程将relay log中的操作依次在本地执行
