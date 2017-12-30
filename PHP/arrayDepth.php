@@ -27,4 +27,5 @@ if (arrayDepth($arr) < 2)
     $dataCollector = array($dataCollector);
 
 $arrDp = arrayDepth($arr);
+echo "现在是测试git的提交和merge";
 var_dump($arrDp);
